@@ -17,6 +17,14 @@ body {
   padding: 10px;
   text-align: center;
 }
+
+.bottomright {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  font-size: 18px;
+}
+
 img .mail{
   display: block;
   margin-left: auto;
@@ -94,99 +102,99 @@ button : hover {
 }
 
 div.first{
-width:350px;
-height:auto;
-margin:50px auto 0;
-padding:50px;
-background-color:#EEE;
-color:#333;
-border:2px solid #C2D6FF;
-border-radius:40px 0 40px 0
+  width:350px;
+  height:auto;
+  margin:50px auto 0;
+  padding:50px;
+  background-color:#EEE;
+  color:#333;
+  border:2px solid #C2D6FF;
+  border-radius:40px 0 40px 0
 }
+
 label{
 font-size:15px;
 font-weight:700
 }
+
 input.fname{
-background-position:6px;
-border:1px solid #DADADA;
-margin-top:10px;
-margin-bottom:10px;
-padding-left:35px;
-width:310px;
-height:30px;
-font-size:14px;
-box-shadow:0 0 10px;
--webkit-box-shadow:0 0 10px;
--moz-box-shadow:0 0 10px;
-border-radius:5px;
--webkit-border-radius:5px;
--moz-border-radius:5px
-}
-input#email{
-background-position:6px;
-border:1px solid #DADADA;
-margin-top:10px;
-margin-bottom:10px;
-padding-left:35px;
-width:310px;
-height:30px;
-font-size:14px;
-box-shadow:0 0 10px;
--webkit-box-shadow:0 0 10px;
--moz-box-shadow:0 0 10px;
-border-radius:5px;
--webkit-border-radius:5px;
--moz-border-radius:5px
-}
-input#contact{
-background-position:6px;
-border:1px solid #DADADA;
-margin-top:10px;
-margin-bottom:10px;
-padding-left:35px;
-width:310px;
-height:30px;
-font-size:14px;
-box-shadow:0 0 10px;
--webkit-box-shadow:0 0 10px;
--moz-box-shadow:0 0 10px;
-border-radius:5px;
--webkit-border-radius:5px;
--moz-border-radius:5px
-}
-input#address{
-background-position:6px;
-border:1px solid #DADADA;
-margin-top:10px;
-margin-bottom:10px;
-padding-left:35px;
-width:310px;
-height:30px;
-font-size:14px;
-box-shadow:0 0 10px;
--webkit-box-shadow:0 0 10px;
--moz-box-shadow:0 0 10px;
-border-radius:5px;
--webkit-border-radius:5px;
--moz-border-radius:5px
-}
-button.submit {
-background-color:#cc7a66;
-border-radius:5px;
-border:none;
-padding:10px 25px;
-color:#FFF;
-text-shadow:1px 1px 1px #949494;
-margin-left:120px
-}
-button.submit:hover{
-background-color:#FF9980
+  background-position:6px;
+  border:1px solid #DADADA;
+  margin-top:10px;
+  margin-bottom:10px;
+  padding-left:35px;
+  width:310px;
+  height:30px;
+  font-size:14px;
+  box-shadow:0 0 10px;
+  -webkit-box-shadow:0 0 10px;
+  -moz-box-shadow:0 0 10px;
+  border-radius:5px;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px
 }
 
-.bottomright {
-  position: absolute;
-  bottom: 8px;
-  right: 16px;
-  font-size: 18px;
+input#email{
+  background-position:6px;
+  border:1px solid #DADADA;
+  margin-top:10px;
+  margin-bottom:10px;
+  padding-left:35px;
+  width:310px;
+  height:30px;
+  font-size:14px;
+  box-shadow:0 0 10px;
+  -webkit-box-shadow:0 0 10px;
+  -moz-box-shadow:0 0 10px;
+  border-radius:5px;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px
+}
+
+input#contact{
+  background-position:6px;
+  border:1px solid #DADADA;
+  margin-top:10px;
+  margin-bottom:10px;
+  padding-left:35px;
+  width:310px;
+  height:30px;
+  font-size:14px;
+  box-shadow:0 0 10px;
+  -webkit-box-shadow:0 0 10px;
+  -moz-box-shadow:0 0 10px;
+  border-radius:5px;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px
+}
+
+input#address{
+  background-position:6px;
+  border:1px solid #DADADA;
+  margin-top:10px;
+  margin-bottom:10px;
+  padding-left:35px;
+  width:310px;
+  height:30px;
+  font-size:14px;
+  box-shadow:0 0 10px;
+  -webkit-box-shadow:0 0 10px;
+  -moz-box-shadow:0 0 10px;
+  border-radius:5px;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px
+}
+
+button.submit {
+  background-color:#cc7a66;
+  border-radius:5px;
+  border:none;
+  padding:10px 25px;
+  color:#FFF;
+  text-shadow:1px 1px 1px #949494;
+  margin-left:120px
+}
+
+button.submit:hover{
+  background-color:#FF9980
 }

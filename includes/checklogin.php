@@ -27,10 +27,15 @@ if (isset($_POST['login']) && empty($username_err) && empty($password_err))
     $stmt->execute([$username]);
     $user = $stmt->fetch();
 
-    if ($user && password_verify($password, $user['password']))
+    if ($user && password_verify($password, $user['password']) && $user['verified'])
     {
       $_SESSION['username'] = $username;
       header("location: login_success.php");
+      exit;
+    }
+    elseif ($user && password_verify($password, $user['password']) && !$user['verified'])
+    {
+      echo "User not yet verified<br>";
       exit;
     }
     else
@@ -47,6 +52,9 @@ else {
     echo $password_err;
   else if (!empty($username_err))
     echo $username_err;
+  elseif ($user['vkey'] === 0) {
+    echo "Account not verified yet";
+  }
   else
     echo "Oops something went wrong. Please try again later.";
 }

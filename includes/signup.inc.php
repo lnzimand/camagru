@@ -26,8 +26,19 @@ if (strlen($password) < 4){
     $error = "<p>Choose a password that equals or is longer than 4 character</p>";
 }
 
+if (!empty($password))
+{
+  $upper = preg_match('/[A-Z]/', $password);
+  $lower = preg_match('/[a-z]/', $password);
+  $spchar = preg_match('/[!@#$%^&*()-_+=[\]\\;\',.?":{}|<>~]/', $password);
+  if (!$upper || !$lower || !$spchar)
+  {
+    $error = "<p>At least one upper case, a lower case, and a special character must be present</p>";
+  }
+}
+
 //username length
-if (strlen($password) < 4){
+if (strlen($username) < 4){
     $error = "<p>Choose a username that equals or is longer than 4 character</p>";
 }
 
@@ -46,7 +57,6 @@ if (!isset($error)) {
         $stmt->bindParam(':vkey', $vkey);
 	    	$user = $stmt->execute();
 
-        // mail("lnzimand@student.wethinkcode.co.za", "something", "something");
         if ($user)
         {
           //verification email
