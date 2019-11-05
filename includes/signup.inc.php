@@ -1,5 +1,5 @@
 <?php
-require_once 'setup.php';
+require_once 'connection.php';
 
 $username = $_POST['username'];
 $email = $_POST['email'];
@@ -46,9 +46,6 @@ if (!isset($error)) {
 
     $vkey = md5(time().$username);
 		try {
-	    $connection = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
-	    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 	    	$stmt = $connection->prepare("INSERT INTO users (email, password, username, vkey)
 	    	VALUES (:email, :password, :username, :vkey)");
 	    	$stmt->bindParam(':email', $email);
@@ -62,7 +59,7 @@ if (!isset($error)) {
           //verification email
           $to = $email;
           $subject = "Email verification";
-          $message = "<a href='verify.php?vkey=$vkey'>Click here to verify your account</a>";
+          $message = "<a href='http://c5r9s9.wethinkcode.co.za:8080/php/camagru/includes/verify.php?vkey=$vkey'>Click here to verify your account</a>";
           $headers = "From: lnzimand@student.wethinkcode.co.za" . "\r\n";
           $headers .= 'MIME-Version: 1.0' . "\r\n";
           $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
@@ -87,10 +84,11 @@ if (!isset($error)) {
 				else
 	    		echo "Error: " . $e->getMessage();
 	    }
-	$connection = null;
 }
 else {
     echo "error occured: ".$error;
     exit();
 }
+
+$connection = null;
 ?>

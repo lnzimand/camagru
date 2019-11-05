@@ -1,12 +1,9 @@
 <?php
-require_once 'setup.php';
+require_once 'connection.php';
 
 if (isset($_GET['vkey']))
 {
   $vkey = $_GET['vkey'];
-  $connection = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
-  $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
   $stmt = $connection->prepare("SELECT * FROM users WHERE verified = 0 AND vkey = :vkey");
   $stmt->bindParam(':vkey', $vkey);
   $stmt->execute();

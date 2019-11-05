@@ -8,7 +8,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
   exit;
 }
 
-require_once 'setup.php';
+require_once 'connection.php';
 
 $username = trim($_POST['username']);
 $password = trim($_POST['passwd']);
@@ -21,17 +21,18 @@ if (empty($password))
 if (isset($_POST['login']) && empty($username_err) && empty($password_err))
 {
   try {
-    $connection = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
-    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $connection->prepare("SELECT * FROM users WHERE username = ?");
-    $stmt->execute([$username]);
+    $stmt = $connection->prepare("SELECT * FROM users WHERE username = :username");
+    $stmt->bindParam(':username', $username);
+    $stmt->execute();
     $user = $stmt->fetch();
+    $userid = $user['id'];
 
     if ($user && password_verify($password, $user['password']) && $user['verified'])
     {
       $_SESSION['username'] = $username;
+      $_SESSION['userid'] = $userid;
+      $_SESSION['loggedin'] = true;
       header("location: login_success.php");
-      exit;
     }
     elseif ($user && password_verify($password, $user['password']) && !$user['verified'])
     {

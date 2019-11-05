@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'connection.php';
 
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true)
 {
@@ -15,9 +16,6 @@ if (isset($_POST['submit']))
   {
     $password = $_POST['password'];
     try {
-      $connection = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
-      $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
       $query = $connection->prepare("SELECT * FROM users WHERE username = :username");
       $query = bindParam(':password', $_SESSION['username']);
       $query->execute();

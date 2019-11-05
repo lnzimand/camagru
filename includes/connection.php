@@ -1,6 +1,3 @@
 <?php
-$dbhost = 'localhost';
-$dbname = 'accounts';
-$dbuser = 'root';
-$dbpass = 'palesa';
+require_once "../config/setup.php";
 ?>
