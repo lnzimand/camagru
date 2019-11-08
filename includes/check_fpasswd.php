@@ -1,7 +1,7 @@
 <?php
 require_once 'connection.php';
 
-if (isset($_POST['passwd']))
+if (isset($_POST['passwd']) && isset($_POST['email']))
 {
     $password = $_POST['passwd'];
     $cpassword = $_POST['cpasswd'];
@@ -40,7 +40,7 @@ if (isset($_POST['passwd']))
             $stmt->bindParam(':email', $email);
       	   	$user = $stmt->execute();
 
-            echo "password updated".$email;
+            header("location: login_success.php");
       	}
       	catch(PDOException $e) {
       	    		echo "Error: " . $e->getMessage();
@@ -67,7 +67,8 @@ else
           <input type="hidden" name="email" value="
 _END;
     $text2 = <<<_END
-    "<button type="submit" name="passup">Update Password</button>
+    "<button type="submit" name="passup"></button>
+    <button type="submit" name="passup">Update Password</button>
         </form>
       </body>
     </html>

@@ -1,37 +1,33 @@
 <?php
 session_start();
-require_once 'connection.php';
 
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true)
+ if (empty($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true)
 {
   header("location: ../login.php");
-  exit;
 }
 
-require_once 'setup.php';
-
-if (isset($_POST['submit']))
+if (!empty($_SESSION['loggedin']) && $_SESSION['loggedin'] === true)
 {
-  if (isset($_POST['password']))
-  {
-    $password = $_POST['password'];
-    try {
-      $query = $connection->prepare("SELECT * FROM users WHERE username = :username");
-      $query = bindParam(':password', $_SESSION['username']);
-      $query->execute();
-      $result = $query->rowCount();
-
-      if ($result === 1)
-      {
-        header("location: newpassword.php");
-      }
-      else
-        header("location: lo")
-    } catch (PDOException $e) {
-
-    }
-
-  }
+  $email = $_SESSION['email'];
+  $text1 = <<<_END
+    <!DOCTYPE html>
+    <html lang="en" dir="ltr">
+      <head>
+        <meta charset="utf-8">
+      </head>
+      <body>
+        <form action="check_fpasswd.php" method="post">
+          <p>Enter a new password <input type="password" name="passwd" placeholder="New Password"></p>
+          <p>Confirm Password <input type="password" name="cpasswd" placeholder="Confirm Password"></p>
+          <input type="hidden" name="email" value="
+_END;
+    $text2 = <<<_END
+    "<button type="submit" name="passup"></button>
+    <button type="submit" name="passup">Update Password</button>
+        </form>
+      </body>
+    </html>
+_END;
+  echo $text1.$email.$text2;
 }
-
 ?>

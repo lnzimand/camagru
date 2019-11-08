@@ -26,12 +26,14 @@ if (isset($_POST['login']) && empty($username_err) && empty($password_err))
     $stmt->execute();
     $user = $stmt->fetch();
     $userid = $user['id'];
+    $email = $user['email'];
 
     if ($user && password_verify($password, $user['password']) && $user['verified'])
     {
       $_SESSION['username'] = $username;
       $_SESSION['userid'] = $userid;
       $_SESSION['loggedin'] = true;
+      $_SESSION['email'] = $email;
       header("location: login_success.php");
     }
     elseif ($user && password_verify($password, $user['password']) && !$user['verified'])

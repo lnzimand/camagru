@@ -36,8 +36,8 @@ try {
           `userid` INT NOT NULL,
           `caption` VARCHAR(160),
           `img` VARCHAR(100) NOT NULL,
-          `upload_date` DATETIME NOT NULL,
-          FOREIGN KEY (userid) REFERENCES users(id)
+          `upload_date` DATETIME NOT NULL
+          -- FOREIGN KEY (userid) REFERENCES users(id)
         )";
         $connection->exec($query);
         // echo "Table gallery created successfully<br>";
@@ -46,13 +46,12 @@ try {
     }
 
 try {
-        $query  = "CREATE TABLE IF NOT EXISTS `like` (
+        $query  = "CREATE TABLE IF NOT EXISTS `likes` (
           `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
           `userid` INT NOT NULL,
-          `galleryid` INT(11) NOT NULL,
-          `type` BOOLEAN NOT NULL DEFAULT 0,
-          FOREIGN KEY (userid) REFERENCES users(id),
-          FOREIGN KEY (galleryid) REFERENCES gallery(id)
+          `galleryid` INT NOT NULL
+          -- FOREIGN KEY (userid) REFERENCES users(id),
+          -- FOREIGN KEY (galleryid) REFERENCES gallery(id)
         )";
         $connection->exec($query);
         // echo "Table like created successfully<br>";
@@ -65,9 +64,9 @@ try {
           `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
           `userid` INT NOT NULL,
           `galleryid` INT NOT NULL,
-          `comment` VARCHAR(255) NOT NULL,
-          FOREIGN KEY (userid) REFERENCES users(id),
-          FOREIGN KEY (galleryid) REFERENCES gallery(id)
+          `comment` VARCHAR(255) NOT NULL
+          -- FOREIGN KEY (userid) REFERENCES users(id),
+          -- FOREIGN KEY (galleryid) REFERENCES gallery(id)
         )";
         $connection->exec($query);
         // echo "Table comment created successfully<br>";

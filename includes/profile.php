@@ -12,7 +12,7 @@ if(isset($_SESSION['loggedin']))
 {
   require_once "../header.php";
   require_once "uploadfile.php";
-  require_once "gallery.php";
+  require_once "showpics.php";
 }
 else
 {

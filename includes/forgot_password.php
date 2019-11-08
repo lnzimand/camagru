@@ -49,9 +49,14 @@ else
     </head>
     <body>
       <form action="forgot_password.php" method="post">
+        <p>Forgot Password?</p><br>
+        Enter Email Address:
         <input type="text" name="email" placeholder="Enter Email Address">
-        <button type="submit" name="login">Confirm</button>
+        <br><br>
+        <input type="submit" value="Submit">
       </form>
+
+    </form>
     </body>
   </html>
 _END;

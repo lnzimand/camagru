@@ -50,11 +50,12 @@ if ($_SESSION['loggedin'])
       <div class="dropdown">
         <button class="dropbtn">Settings</button>
         <div class="dropdown-content">
-          <a href="#">Profile</a>
-          <a href="#">Change Password</a>
-          <a href="#">Update Username</a>
-          <a href="#">Update Email</a>
-          <a href="#"></a>
+          <a href="login_success.php">Home</a>
+          <a href="profile.php">Profile</a>
+          <a href="changing_passwd.php">Change Password</a>
+          <a href="update_username.php">Update Username</a>
+          <a href="update_email.php">Update Email</a>
+          <a href="logout.php">Logout</a>
         </div>
       </div>
       </nav>
