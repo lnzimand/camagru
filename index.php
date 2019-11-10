@@ -1,9 +1,14 @@
-<?php require "header.php" ?>
+<?php
+require "header.php";
+session_start();
+?>
 
 <main>
   <div class="container">
     <div class="first">
       <form action="includes/signup.inc.php" method="post" autocomplete="on">
+        <?php if (isset($_SESSION['loginerror']))
+          echo "<h4 style='color:red;'>".$_SESSION['loginerror']."</h4>"?>
         <h1>Register</h1>
         <label>Username</label>
         <input class="fname" type="text" name="username" placeholder="Preferred Username">
@@ -19,5 +24,5 @@
     </div>
   </div>
 </main>
-
-<?php require "footer.php" ?>
+<?php session_destroy();?>
+<?php require "footer.php"; ?>

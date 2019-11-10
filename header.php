@@ -55,6 +55,7 @@ if ($_SESSION['loggedin'])
           <a href="changing_passwd.php">Change Password</a>
           <a href="update_username.php">Update Username</a>
           <a href="update_email.php">Update Email</a>
+          <a href="email_notification.php">Notifications</a>
           <a href="logout.php">Logout</a>
         </div>
       </div>
@@ -77,8 +78,8 @@ else
       </head>
       <body>
         <nav>
-          <a class="nav-item" href="#">Home</a>
-          <a class="nav-item" href="#">About</a>
+          <a class="nav-item" href="login.php">Home</a>
+          <a class="nav-item" href="includes/gallery.php">Gallery</a>
         </nav>
       </body>
     </html>

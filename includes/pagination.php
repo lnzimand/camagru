@@ -77,8 +77,8 @@ $image=$row['img'];
 echo '<div class="img-container">';
 echo '<div class="img">';
 echo $row['caption']."<br>";
-echo '<a href="'.$image.'">';
-echo '<img src="'.$image.'" width="40%" height="40%">';
+echo '<a href="'.$image.'" width="40%" height="40%">';
+echo '<img src="'.$image.'">';
 echo '</a><br>';
 $stmt = $connection->prepare("SELECT COUNT(*) FROM likes WHERE galleryid =".$row['id']);
 $stmt->execute();
@@ -99,9 +99,8 @@ if ($_SESSION['loggedin'] === true)
 $stmt = $connection->prepare("SELECT * FROM comment WHERE galleryid =".$row['id']);
 $stmt->execute();
 $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
-echo "<h5>Comments</h5>";
 foreach ($comments as $value) {
-  echo "<p>".$value['comment']."</p>";
+  echo "<p>Comment ".$value['id'].": ".$value['comment']."</p>";
 }
 echo '</div>';
 echo '</div>';

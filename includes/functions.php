@@ -1,7 +1,9 @@
 <?php
+include_once '../config/database.php';
 
 function getComments($imagenu)
 {
+    include "connection.php";
     try{
         $stmt = $connection->prepare('SELECT * FROM comments WHERE galleryid = :imagenu');
         $stmt->bindParam(':imagenu', $imagenu);
@@ -16,9 +18,15 @@ function getComments($imagenu)
 
 function getLikes($imagenu)
 {
+    echo $imagenu;
+    echo $dbhost;
     try{
-        $stmt = $connection->prepare('SELECT * FROM likes WHERE galleryid = :imagenu');
-        $stmt->bindParam(':imagenu', $imagenu);
+        echo "you shelter me";
+        $connection = new PDO('mysql:host='."'localhost'".';dbname='."'accounts'", "root", "palesa");
+        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt = $connection->prepare("SELECT COUNT(*) FROM likes WHERE galleryid = $imagenu");
+        echo "and here";
+        // $stmt->bindParam(':imagenu', );
         $stmt->execute();
         $val = $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return ($stmt->fetchAll());

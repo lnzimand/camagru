@@ -11,6 +11,7 @@ if ($_SESSION['userid'] && $_POST['delete'])
     $stmt->execute();
 
     header("location: profile.php");
+    exit();
   } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
   }

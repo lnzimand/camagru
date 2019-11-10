@@ -14,7 +14,7 @@ if ($_POST['email'])
     {
       $to = $email;
       $subject = "Password reset";
-      $message = "<a href='http://c5r9s9.wethinkcode.co.za:8080/php/camagru/includes/check_fpasswd.php?&email=$email'>Click here to reset password</a>";
+      $message = "<a href='http://c5r9s9.wethinkcode.co.za:8081/php/camagru/includes/check_fpasswd.php?&email=$email'>Click here to reset password</a>";
       $headers = "From: lnzimand@student.wethinkcode.co.za" . "\r\n";
       $headers = "MIME-Version: 1.0" . "\r\n";
       $headers = "Content-type: text/html; charset=iso-8859-1" . "\r\n";

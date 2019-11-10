@@ -23,7 +23,8 @@ if (!empty($_SESSION['loggedin']) && $_SESSION['loggedin'] === true)
 _END;
     $text2 = <<<_END
     "<button type="submit" name="passup"></button>
-    <button type="submit" name="passup">Update Password</button>
+    <button type="submit" name="passup">Update Password</button><br>
+      Email notification<input type="checkbox" name="email-notification" checked>
         </form>
       </body>
     </html>

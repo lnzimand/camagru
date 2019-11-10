@@ -13,6 +13,7 @@ if (isset($_POST['like']))
     $stmt->execute();
 
     header("location: login_success.php");
+    exit();
   }
   catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
@@ -25,6 +26,7 @@ elseif (isset($_POST['comment'])) {
     $stmt->execute();
 
     header("location: login_success.php");
+    exit();
   } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
   }

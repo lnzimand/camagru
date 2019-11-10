@@ -1,5 +1,6 @@
 <?php
 require_once 'connection.php';
+session_start();
 
 $username = $_POST['username'];
 $email = $_POST['email'];
@@ -68,6 +69,7 @@ if (!isset($error)) {
           if (mail($to, $subject, $message, $headers))
           {
            header("location: thankyou.php");
+           exit();
           }
           else
           {
@@ -77,16 +79,23 @@ if (!isset($error)) {
 		}
 	catch(PDOException $e)
 	    {
-				if (strpos($e->getMessage(), "email"))
-					echo "Email: $email is already taken";
-				elseif (strpos($e->getMessage(), "username"))
-					echo "Username: $username is alreay taken";
+				if (strpos($e->getMessage(), "email")) {
+					$_SESSION['loginerror'] = "Email: $email is already taken";
+          header("location: ../index.php");
+          exit();
+        }
+				elseif (strpos($e->getMessage(), "username")) {
+					$_SESSION['loginerror'] = "Username: $username is alreay taken";
+          header("location: ../index.php");
+          exit();
+        }
 				else
 	    		echo "Error: " . $e->getMessage();
 	    }
 }
 else {
-    echo "error occured: ".$error;
+    $_SESSION['loginerror'] = $error;
+    header("location: ../index.php");
     exit();
 }
 

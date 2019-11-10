@@ -29,6 +29,7 @@ if ($_FILES)
       $stmt->execute();
 
       header("location: login_success.php");
+      exit();
     }
     catch(PDOException $e)
     {

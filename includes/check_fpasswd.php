@@ -1,5 +1,6 @@
 <?php
 require_once 'connection.php';
+session_start();
 
 if (isset($_POST['passwd']) && isset($_POST['email']))
 {
@@ -40,7 +41,24 @@ if (isset($_POST['passwd']) && isset($_POST['email']))
             $stmt->bindParam(':email', $email);
       	   	$user = $stmt->execute();
 
-            header("location: login_success.php");
+            if (!empty($_POST['email-notification']))
+            {
+              $to = $email;
+              $subject = "Password";
+              $message = "Your password was successfully updated";
+              $headers = "From: lnzimand@student.wethinkcode.co.za" . "\r\n";
+              $headers .= 'MIME-Version: 1.0' . "\r\n";
+              $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+              mail($to, $subject, $message, $headers);
+            }
+
+            foreach ($_SESSION as $value) {
+              unset($value);
+            }
+            session_destroy();
+            header("location: ../login.php");
+            exit();
       	}
       	catch(PDOException $e) {
       	    		echo "Error: " . $e->getMessage();
@@ -62,13 +80,14 @@ else
       </head>
       <body>
         <form action="check_fpasswd.php" method="post">
-          <input type="password" name="passwd" placeholder="Enter Password">
-          <input type="password" name="cpasswd" placeholder="Confirm Password">
+          New Password <input type="password" name="passwd" placeholder="Enter Password"><br>
+          Confirm Password <input type="password" name="cpasswd" placeholder="Confirm Password">
           <input type="hidden" name="email" value="
 _END;
     $text2 = <<<_END
     "<button type="submit" name="passup"></button>
-    <button type="submit" name="passup">Update Password</button>
+    <button type="submit" name="passup">Update Password</button><br>
+    Email notification<input type="checkbox" name="email-notification" checked>
         </form>
       </body>
     </html>

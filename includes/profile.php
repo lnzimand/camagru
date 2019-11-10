@@ -5,7 +5,7 @@ session_start();
 if (!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true)
 {
   header("location: ../login.php");
-  exit;
+  exit();
 }
 
 if(isset($_SESSION['loggedin']))
@@ -17,5 +17,6 @@ if(isset($_SESSION['loggedin']))
 else
 {
      header("location:../login.php");
+     exit();
 }
 ?>

@@ -22,6 +22,7 @@ try {
           `password` VARCHAR(255) NOT NULL,
           `vkey` VARCHAR(50) NOT NULL,
           `verified` TINYINT(1) NOT NULL DEFAULT 0,
+          `email_notification` VARCHAR(3) NOT NULL DEFAULT 'YES',
           UNIQUE(`email`, `username`)
         )";
         $connection->exec($query);
@@ -37,7 +38,6 @@ try {
           `caption` VARCHAR(160),
           `img` VARCHAR(100) NOT NULL,
           `upload_date` DATETIME NOT NULL
-          -- FOREIGN KEY (userid) REFERENCES users(id)
         )";
         $connection->exec($query);
         // echo "Table gallery created successfully<br>";
@@ -50,8 +50,6 @@ try {
           `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
           `userid` INT NOT NULL,
           `galleryid` INT NOT NULL
-          -- FOREIGN KEY (userid) REFERENCES users(id),
-          -- FOREIGN KEY (galleryid) REFERENCES gallery(id)
         )";
         $connection->exec($query);
         // echo "Table like created successfully<br>";
@@ -65,8 +63,6 @@ try {
           `userid` INT NOT NULL,
           `galleryid` INT NOT NULL,
           `comment` VARCHAR(255) NOT NULL
-          -- FOREIGN KEY (userid) REFERENCES users(id),
-          -- FOREIGN KEY (galleryid) REFERENCES gallery(id)
         )";
         $connection->exec($query);
         // echo "Table comment created successfully<br>";

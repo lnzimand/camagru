@@ -17,6 +17,7 @@ if (isset($_GET['vkey']))
     if ($user)
     {
       header("location: verified.php");
+      exit();
     }
     else
       echo "This account is invalid or already verified";

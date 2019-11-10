@@ -35,6 +35,7 @@ if (isset($_POST['login']) && empty($username_err) && empty($password_err))
       $_SESSION['loggedin'] = true;
       $_SESSION['email'] = $email;
       header("location: login_success.php");
+      exit();
     }
     elseif ($user && password_verify($password, $user['password']) && !$user['verified'])
     {

@@ -31,7 +31,24 @@ if (isset($_POST['email']) && $_SESSION['loggedin'] && $_SESSION['loggedin'] ===
       $stmt->bindParam(':username', $_SESSION['username']);
       $user = $stmt->execute();
 
-      header("location: login_success.php");
+      if (!empty($_POST['email-notification']))
+      {
+        $to = $email;
+        $subject = "Email";
+        $message = "You've chosen to use " . $email . " as your new email";
+        $headers = "From: lnzimand@student.wethinkcode.co.za" . "\r\n";
+        $headers .= 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+        mail($to, $subject, $message, $headers);
+      }
+
+      foreach ($_SESSION as $value) {
+        unset($value);
+      }
+      session_destroy();
+      header("location: ../login.php");
+      exit();
   }
   catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
@@ -42,6 +59,7 @@ if (isset($_POST['email']) && $_SESSION['loggedin'] && $_SESSION['loggedin'] ===
     if ($_SESSION['loggedin'] === true)
     {
       header("location: update_email.php");
+      exit();
     }
   }
 }
@@ -57,7 +75,8 @@ else
       <form action="update_email.php" method="post">
         Enter valid email address:
         <input type="text" name="email" placeholder="Enter new email Address">
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit"><br>
+        Email notification <input type="checkbox" name="email-notification" checked><br>
       </form>
       <a href="login_success.php">home</a>
     </body>
