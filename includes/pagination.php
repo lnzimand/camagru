@@ -99,8 +99,9 @@ if ($_SESSION['loggedin'] === true)
 $stmt = $connection->prepare("SELECT * FROM comment WHERE galleryid =".$row['id']);
 $stmt->execute();
 $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+echo "<h5>Comments</h5>";
 foreach ($comments as $value) {
-  echo "<p>Comment ".$value['id'].": ".$value['comment']."</p>";
+  echo $value['comment']."</p>";
 }
 echo '</div>';
 echo '</div>';

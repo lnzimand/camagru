@@ -79,7 +79,7 @@ else
       <body>
         <nav>
           <a class="nav-item" href="login.php">Home</a>
-          <a class="nav-item" href="includes/gallery.php">Gallery</a>
+          <a class="nav-item" href="includes/pagination.php">Gallery</a>
         </nav>
       </body>
     </html>

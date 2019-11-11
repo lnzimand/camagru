@@ -1,6 +1,7 @@
 <?php
 include_once('connection.php');
 session_start();
+include_once ("../header.php");
 $per_page = 5;
 
 if (isset($_GET['page'])) {
@@ -115,4 +116,5 @@ catch(PDOException $e)
 echo '</div>';
 
 echo '<div class="clearfix"></div>';
+include_once("../footer.php");
 ?>
