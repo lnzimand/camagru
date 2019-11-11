@@ -60,7 +60,7 @@ if (!isset($error)) {
           //verification email
           $to = $email;
           $subject = "Email verification";
-          $message = "<a href='http://c5r9s9.wethinkcode.co.za:8081/php/camagru/includes/verify.php?vkey=$vkey'>Click here to verify your account</a>";
+          $message = "<a href='http://".$_SERVER['HTTP_HOST']."/camagru/".basename(dirname(__FILE__))."/verify.php?vkey=$vkey'>Click here to verify your account</a>";
           $headers = "From: lnzimand@student.wethinkcode.co.za" . "\r\n";
           $headers .= 'MIME-Version: 1.0' . "\r\n";
           $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";

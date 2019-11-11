@@ -1,7 +1,6 @@
 <?php
 include_once('connection.php');
 session_start();
-echo "<a href='login_success.php'>Home</a>";
 $per_page = 5;
 
 if (isset($_GET['page'])) {

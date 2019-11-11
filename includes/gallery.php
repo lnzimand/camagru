@@ -1,7 +1,6 @@
 <?php
 include_once('connection.php');
 session_start();
-echo "<a href='login_success.php'>Home</a>";
 $per_page = 5;
 
 if (isset($_GET['page'])) {
@@ -45,22 +44,22 @@ $i = 1;
 echo '<div id="pageNav"'.$display.'>';
 
 if ($page) {
-echo '<a href="pagination.php"><button><<</button></a>';
-echo '<a href="pagination.php?page='.$page_down.'"><button><</button></a>';
+echo '<a href="gallery.php"><button><<</button></a>';
+echo '<a href="login_success.php?page='.$page_down.'"><button><</button></a>';
 }
 
 for ($i=1;$i<=$pages_total;$i++) {
 if(($i==$page+1)) {
-echo '<a href="pagination.php?page='.$i.'"><button class="active">'.$i.'</button></a>';
+echo '<a href="login_success.php?page='.$i.'"><button class="active">'.$i.'</button></a>';
 }
 
 if(($i!=$page+1)&&($i<=$page+3)&&($i>=$page-1)) {
-echo '<a href="pagination.php?page='.$i.'"><button>'.$i.'</button></a>'; }
+echo '<a href="login_success.php?page='.$i.'"><button>'.$i.'</button></a>'; }
 }
 
 if (($page + 1) != $pages_total) {
-echo '<a href="pagination.php?page='.$page_up.'"><button>></button></a>';
-echo '<a href="pagination.php?page='.$pages_total.'"><button>>></button></a>';
+echo '<a href="login_success.php?page='.$page_up.'"><button>></button></a>';
+echo '<a href="login_success.php?page='.$pages_total.'"><button>>></button></a>';
 }
 echo '</div>';
 
