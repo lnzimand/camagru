@@ -1,6 +1,11 @@
 <?php
 require_once "connection.php";
 session_start();
+if (!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true)
+{
+  header("location: ../login.php");
+  exit();
+}
 
 $userid = $_POST['userid'];
 $gallerid = $_POST['galleryid'];

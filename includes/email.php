@@ -2,6 +2,12 @@
 require_once "connection.php";
 session_start();
 
+if (!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true)
+{
+  header("location: ../login.php");
+  exit();
+}
+
 $stmt = $connection->prepare("SELECT * FROM users WHERE id = :userid");
 $stmt->bindParam(':userid', $_SESSION['notifyuser']);
 $stmt->execute();

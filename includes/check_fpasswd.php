@@ -2,6 +2,12 @@
 require_once 'connection.php';
 session_start();
 
+if (!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true)
+{
+  header("location: ../login.php");
+  exit();
+}
+
 if (isset($_POST['passwd']) && isset($_POST['email']))
 {
     $password = $_POST['passwd'];

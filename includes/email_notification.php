@@ -2,6 +2,12 @@
 session_start();
 require_once "connection.php";
 
+if (!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true)
+{
+  header("location: ../login.php");
+  exit();
+}
+
 if (isset($_POST['email_notification']) && $_SESSION['loggedin'] === true)
 {
   $stmt = $connection->prepare("UPDATE users SET email_notification = :email WHERE username = :username");
