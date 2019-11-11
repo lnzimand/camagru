@@ -1,5 +1,6 @@
 <?php
 require_once "connection.php";
+session_start();
 
 $userid = $_POST['userid'];
 $gallerid = $_POST['galleryid'];
@@ -25,7 +26,9 @@ elseif (isset($_POST['comment'])) {
     VALUES('$userid', '$gallerid', '$comment')");
     $stmt->execute();
 
-    header("location: login_success.php");
+    $_SESSION['notifyuser'] = $userid;
+    echo $_SESSION['notifyuser'];
+    header("location: email.php");
     exit();
   } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();

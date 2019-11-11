@@ -61,4 +61,5 @@ else
   </html>
 _END;
 }
+$connection = NULL;
 ?>

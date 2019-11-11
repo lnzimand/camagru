@@ -80,14 +80,13 @@ else
       </head>
       <body>
         <form action="check_fpasswd.php" method="post">
-          New Password <input type="password" name="passwd" placeholder="Enter Password"><br>
-          Confirm Password <input type="password" name="cpasswd" placeholder="Confirm Password">
+          <input type="password" name="passwd" placeholder="Enter Password">
+          <input type="password" name="cpasswd" placeholder="Confirm Password">
           <input type="hidden" name="email" value="
 _END;
     $text2 = <<<_END
     "<button type="submit" name="passup"></button>
-    <button type="submit" name="passup">Update Password</button><br>
-    Email notification<input type="checkbox" name="email-notification" checked>
+    <button type="submit" name="passup">Update Password</button>
         </form>
       </body>
     </html>

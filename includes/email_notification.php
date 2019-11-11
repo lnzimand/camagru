@@ -25,6 +25,7 @@ if (isset($_POST['email_notification']) && $_SESSION['loggedin'] === true)
     exit();
   }
 }
+$connection = NULL;
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
