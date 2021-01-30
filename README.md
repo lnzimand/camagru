@@ -17,7 +17,7 @@ Create an image sharing application similar to Instagram
 #### Copy source code to your current working environment
 - git clone https://github.com/lnzimand/camagru
 #### Setup & configuring mysql database and webserver
-###### Platform Linux (Ubuntu)
+###### Platform Linux (Ubuntu 20.04)
 - https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04
 #### Running the program
 - If the previous step is done then head over to http://server_domain_or_IP
