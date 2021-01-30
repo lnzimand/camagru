@@ -7,7 +7,7 @@ if (!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true)
   exit();
 }
 
-if ($_FILES)
+if ($_FILES['filename'])
 {
   switch ($_FILES['filename']['type']) {
     case 'image/jpeg':  $ext = 'jpg'; break;
@@ -18,13 +18,16 @@ if ($_FILES)
   }
   if ($ext)
   {
+    $username = $_SESSION['username'];
     $name = md5(time().$username).".".$ext;
     if (!file_exists('../uploads/')) {
-    mkdir('../uploads/', 0777, true);
+      mkdir('../uploads/', 0755, true);
     }
     $folder = "../uploads/";
     $file_path = $folder.$name;
     move_uploaded_file($_FILES['filename']['tmp_name'], $file_path);
+    echo !file_exists('../uploads');
+    echo getcwd();
     try {
       $stmt = $connection->prepare("INSERT INTO gallery (userid, caption, img, upload_date) VALUES(:userid, :caption, :name, :upload_date)");
       $stmt->bindParam(':userid', $_SESSION['userid']);
@@ -41,5 +44,8 @@ if ($_FILES)
       echo "Error: " . $e->getMessage();
     }
   }
+} else {
+  header("location: login_success.php");
 }
+
 ?>

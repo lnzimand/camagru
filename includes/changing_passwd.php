@@ -8,6 +8,7 @@ session_start();
 
 if (!empty($_SESSION['loggedin']) && $_SESSION['loggedin'] === true)
 {
+  require_once "../header.php";
   $email = $_SESSION['email'];
   $text1 = <<<_END
     <!DOCTYPE html>

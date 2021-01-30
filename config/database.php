@@ -2,5 +2,5 @@
 $dbhost = 'localhost';
 $dbname = 'accounts';
 $dbuser = 'root';
-$dbpass = 'palesa';
+$dbpass = 'L@b0hang';
 ?>

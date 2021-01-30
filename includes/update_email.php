@@ -7,6 +7,8 @@ if (!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true)
   exit();
 }
 
+require_once "../header.php";
+
 if (isset($_POST['email']) && $_SESSION['loggedin'] && $_SESSION['loggedin'] === true)
 {
   try {

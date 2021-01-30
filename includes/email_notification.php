@@ -8,6 +8,7 @@ if (!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true)
   exit();
 }
 
+require_once "../header.php";
 if (isset($_POST['email_notification']) && $_SESSION['loggedin'] === true)
 {
   $stmt = $connection->prepare("UPDATE users SET email_notification = :email WHERE username = :username");
