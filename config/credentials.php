@@ -1,6 +1,6 @@
 <?php
-$dbhost = 'localhost';
-$dbname = 'accounts';
-$dbuser = 'root';
-$dbpass = 'L@b0hang';
+$dbhost = '';
+$dbname = '';
+$dbuser = '';
+$dbpass = '';
 ?>
